@@ -1,5 +1,7 @@
 # Algorithm Checklist
 
+[![test](https://github.com/coding-agent/algo-studies/actions/workflows/testing.yml/badge.svg)](https://github.com/coding-agent/algo-studies/actions/workflows/testing.yml)
+
 This repository contains implementations of various search and sort algorithms in Zig.
 
 ## Search Algorithms
