@@ -1,22 +1,21 @@
 const std = @import("std");
 const testing = std.testing;
-const assert = std.debug.assert;
 
 const BinarySearchOptions = struct {
-    //not using recursion by default
+    // not using recursion by default
     rercusive: bool = false,
 };
 
-pub fn search(array: anytype, target: anytype, options: BinarySearchOptions) @TypeOf(array[0]) {
+pub fn search(array: anytype, target: anytype, options: BinarySearchOptions) ?@TypeOf(array[0]) {
     assertNumber(@TypeOf(array));
     if (options.rercusive) {
         @panic("Not implemented yet");
     }
 
-    var left = 0;
-    var right = array.len - 1;
+    var left: usize = 0;
+    var right: usize = array.len - 1;
     while (left < right) {
-        const mid: usize = std.math.floor((left + right) / 2);
+        const mid: usize = (left + right) / 2;
         if (array[mid] == target) {
             return target;
         }
@@ -26,11 +25,15 @@ pub fn search(array: anytype, target: anytype, options: BinarySearchOptions) @Ty
         if (array[mid] > target) {
             right = mid;
         }
+        if ((left + 1) == right) {
+            return null;
+        }
     }
 
-    return 0;
+    return null;
 }
 
+// TODO: implement recursive search
 pub fn searchRecursive(comptime T: type, array: []T, target: T) i8 {
     _ = target;
     _ = array;
@@ -49,11 +52,11 @@ fn assertNumber(comptime T: type) void {
         },
         else => @compileError("binary search exepects an array instead of " ++ @typeName(T)),
     }
-    std.math.sqrt(T);
 }
 
 test "test binary search" {
     const array = [_]i8{ 1, 2, 3, 4, 6, 7, 8, 9, 10, 12 };
     try testing.expectEqual(null, search(array, 5, .{}));
-    try testing.expectEqual(2, search(array, 5, .{}));
+    try testing.expectEqual(4, search(array, 4, .{}));
+    try testing.expectEqual(8, search(array, 8, .{}));
 }
