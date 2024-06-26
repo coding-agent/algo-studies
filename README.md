@@ -7,12 +7,12 @@ This repository contains implementations of various search and sort algorithms i
 ## Search Algorithms
 
 - [x] Binary Search
-- [ ] Depth First Search (DFS)
-- [ ] Breadth First Search (BFS)
 - [ ] Jump Search
 - [ ] Interpolation Search
 - [ ] Exponential Search
 - [ ] Fibonacci Search
+- [ ] Depth First Search (DFS)
+- [ ] Breadth First Search (BFS)
 
 ## Sort Algorithms
 
