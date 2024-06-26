@@ -7,7 +7,7 @@ This repository contains implementations of various search and sort algorithms i
 ## Search Algorithms
 
 - [x] Binary Search
-- [ ] Jump Search
+- [x] Jump Search
 - [ ] Interpolation Search
 - [ ] Exponential Search
 - [ ] Fibonacci Search
