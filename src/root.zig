@@ -6,3 +6,4 @@ test {
 }
 
 pub const BinarySearch = @import("search/binary-search.zig");
+pub const JumpSearch = @import("search/jump-search.zig");

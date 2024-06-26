@@ -17,7 +17,7 @@ const BinarySearchOptions = struct {
 
 pub fn search(array: anytype, target: anytype, options: BinarySearchOptions) ?@TypeOf(array[0]) {
     assertInteger(@TypeOf(array));
-    std.debug.assert(@TypeOf(array[0]) == @TypeOf(target));
+
     if (options.rercusive) {
         @panic("Not implemented yet");
     }
@@ -35,7 +35,7 @@ pub fn search(array: anytype, target: anytype, options: BinarySearchOptions) ?@T
         if (array[mid] > target) {
             right = mid;
         }
-        if ((left + 1) == right) {
+        if (left > right) {
             return null;
         }
     }
