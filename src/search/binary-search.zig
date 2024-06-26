@@ -1,5 +1,14 @@
+/// Binary search is a fast search algorithms
+/// By dividing the search area in half if the target is not found
+/// avoinding the need to check linearly all elements in the array
+///
+/// time complexity: o(log n)
+/// space complexity: o(1)
+/// note: if using recursion the call stack overhead
 const std = @import("std");
 const testing = std.testing;
+const utils = @import("../utils.zig");
+const assertInteger = utils.assertInteger;
 
 const BinarySearchOptions = struct {
     // not using recursion by default
@@ -7,7 +16,8 @@ const BinarySearchOptions = struct {
 };
 
 pub fn search(array: anytype, target: anytype, options: BinarySearchOptions) ?@TypeOf(array[0]) {
-    assertNumber(@TypeOf(array));
+    assertInteger(@TypeOf(array));
+    std.debug.assert(@TypeOf(array[0]) == @TypeOf(target));
     if (options.rercusive) {
         @panic("Not implemented yet");
     }
@@ -42,16 +52,6 @@ pub fn searchRecursive(comptime T: type, array: []T, target: T) i8 {
 
 fn recursion(array: []i8) []i8 {
     _ = array;
-}
-
-fn assertNumber(comptime T: type) void {
-    switch (@typeInfo(T)) {
-        .Array => |info| switch (@typeInfo(info.child)) {
-            .Float, .ComptimeFloat, .ComptimeInt, .Int => return,
-            else => @compileError("binary search not implemented for " ++ @typeName(T)),
-        },
-        else => @compileError("binary search exepects an array instead of " ++ @typeName(T)),
-    }
 }
 
 test "test binary search" {
