@@ -9,7 +9,7 @@
 const std = @import("std");
 const math = std.math;
 const testing = std.testing;
-const utils = @import("../utils.zig");
+const utils = @import("search_utils.zig");
 const assertInteger = utils.assertInteger;
 
 pub fn search(array: anytype, target: anytype) ?@TypeOf(array[0]) {
@@ -19,7 +19,7 @@ pub fn search(array: anytype, target: anytype) ?@TypeOf(array[0]) {
     var start: usize = 0;
     var end: usize = math.sqrt(n);
 
-    while ((array[start] < target) and (start < n)) {
+    while (array[end] <= target and start < n) {
         start = end;
         end = end + math.sqrt(n);
         // ensure end doesn't go out of bounds

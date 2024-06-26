@@ -7,7 +7,7 @@
 /// note: if using recursion the call stack overhead
 const std = @import("std");
 const testing = std.testing;
-const utils = @import("../utils.zig");
+const utils = @import("search_utils.zig");
 const assertInteger = utils.assertInteger;
 
 const BinarySearchOptions = struct {
@@ -15,7 +15,7 @@ const BinarySearchOptions = struct {
     rercusive: bool = false,
 };
 
-pub fn search(array: anytype, target: anytype, options: BinarySearchOptions) ?@TypeOf(array[0]) {
+pub fn search(array: anytype, target: @typeInfo(@TypeOf(array)).Array.child, options: BinarySearchOptions) ?@TypeOf(array[0]) {
     assertInteger(@TypeOf(array));
 
     if (options.rercusive) {
@@ -26,17 +26,15 @@ pub fn search(array: anytype, target: anytype, options: BinarySearchOptions) ?@T
     var right: usize = array.len - 1;
     while (left < right) {
         const mid: usize = (left + right) / 2;
+
         if (array[mid] == target) {
             return target;
         }
         if (array[mid] < target) {
-            left = mid;
+            left = mid + 1;
         }
         if (array[mid] > target) {
             right = mid;
-        }
-        if (left > right) {
-            return null;
         }
     }
 
