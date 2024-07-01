@@ -8,7 +8,7 @@ This repository contains implementations of various search and sort algorithms i
 
 - [x] Binary Search
 - [x] Jump Search
-- [ ] Interpolation Search
+- [x] Interpolation Search
 - [ ] Exponential Search
 - [ ] Fibonacci Search
 - [ ] Depth First Search (DFS)

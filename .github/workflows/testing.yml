@@ -22,5 +22,7 @@ jobs:
         run: zig build
 
       - name: Test project
-        run: zig build test --summary all
-
+        run: |
+          zig fmt --check .
+          zig build
+          zig build test --summary all
